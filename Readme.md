@@ -1,7 +1,7 @@
 # Учебный проект «Код и Магия» [![Build status][travis-image]][travis-url]
 
 * Студент: [Artemy Dmitrochenko](https://up.htmlacademy.ru/javascript/19/user/1115479).
-* Наставник: `Неизвестно`.
+* Наставник: [Анастасия Ничипорчук](https://htmlacademy.ru/profile/id612797).
 
 ---
 
