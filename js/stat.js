@@ -1,6 +1,6 @@
 'use strict';
 
-window.renderStatistics function(ctx, names, times) {
+window.renderStatistics = function(ctx, names, times) {
   ctx.fillStyle = "#444";
-  ctx.fillRect(100, 10, 500, 200);
+  ctx.fillRect(100, 10, 420, 270);
 }
