@@ -47,8 +47,8 @@ for (var i = 0; i < WIZZARDS_COUNT; i++) {
 function createSimilarWizzard() {
   return {
     name: generateName(),
-    coatColor: getCoatColor(),
-    eyesColor: geteyesColor()
+    coatColor: generateCoatColor(),
+    eyesColor: generateEyesColor()
   };
 }
 
@@ -56,11 +56,11 @@ function generateName() {
   return getArrayRandomElement(firstNames) + ' ' + getArrayRandomElement(secondNames);
 }
 
-function getCoatColor() {
+function generateCoatColor() {
   return getArrayRandomElement(coatColors);
 }
 
-function geteyesColor() {
+function generateEyesColor() {
   return getArrayRandomElement(eyesColors);
 }
 
