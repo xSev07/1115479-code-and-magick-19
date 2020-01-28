@@ -1,7 +1,7 @@
 'use strict';
 
+var WIZZARDS_COUNT = 4;
 var userDialog = document.querySelector('.setup');
-userDialog.classList.remove('hidden');
 
 var firstNames = [
   'Иван',
@@ -38,3 +38,35 @@ var eyesColors = [
   'yellow',
   'green'
 ];
+var similarWizzards = [];
+
+for (var i = 0; i < WIZZARDS_COUNT; i++) {
+  similarWizzards.push(createSimilarWizzard());
+}
+
+function createSimilarWizzard() {
+  return {
+    name: generateName(),
+    coatColor: getCoatColor(),
+    eyesColor: geteyesColor()
+  };
+}
+
+function generateName() {
+  return getArrayRandomElement(firstNames) + ' ' + getArrayRandomElement(secondNames);
+}
+
+function getCoatColor() {
+  return getArrayRandomElement(coatColors);
+}
+
+function geteyesColor() {
+  return getArrayRandomElement(eyesColors);
+}
+
+function getArrayRandomElement(array) {
+  var randomIndex = Math.floor(Math.random() * array.length);
+  return array[randomIndex];
+}
+
+userDialog.classList.remove('hidden');
