@@ -53,6 +53,10 @@ var setupClose = setup.querySelector('.setup-close');
 var wizardCoat = setup.querySelector('.wizard-coat');
 var wizardEyes = setup.querySelector('.wizard-eyes');
 var wizardFireball = setup.querySelector('.setup-fireball-wrap');
+var userNameInput = setup.querySelector('.setup-user-name');
+var coatColorInput = setup.querySelector('input[name="coat-color"]');
+var eyesColorInput = setup.querySelector('input[name="eyes-color"]');
+var fireballColorInput = setup.querySelector('input[name="fireball-color"]');
 var similarListElement = document.querySelector('.setup-similar-list');
 var similarWizardTemplate = document.querySelector('#similar-wizard-template')
   .content
@@ -131,18 +135,22 @@ function closePopup() {
   document.removeEventListener('keydown', onPopupEscPress);
 }
 
-function changeColor(element) {
-  switch (element) {
-    case 'coat':
-      wizardCoat.style.fill = generateCoatColor();
-      break;
-    case 'eyes':
-      wizardEyes.style.fill = generateEyesColor();
-      break;
-    case 'fireball':
-      wizardFireball.style.background = generateFireballColor();
-      break;
-  }
+function setWizardCoatColor() {
+  var color = generateCoatColor();
+  wizardCoat.style.fill = color;
+  coatColorInput.value = color;
+}
+
+function setWizardEyesColor() {
+  var color = generateEyesColor();
+  wizardEyes.style.fill = color;
+  eyesColorInput.value = color;
+}
+
+function setWizardFireballColor() {
+  var color = generateFireballColor();
+  wizardFireball.style.background = color;
+  fireballColorInput.value = color;
 }
 
 setupOpen.addEventListener('click', function () {
@@ -166,15 +174,27 @@ setupClose.addEventListener('keydown', function (evt) {
 });
 
 wizardCoat.addEventListener('click', function () {
-  changeColor('coat');
+  setWizardCoatColor();
 });
 
 wizardEyes.addEventListener('click', function () {
-  changeColor('eyes');
+  setWizardEyesColor();
 });
 
 wizardFireball.addEventListener('click', function () {
-  changeColor('fireball');
+  setWizardFireballColor();
+});
+
+userNameInput.addEventListener('invalid', function () {
+  if (userNameInput.validity.tooShort) {
+    userNameInput.setCustomValidity('Имя должно состоять минимум из 2-х символов');
+  } else if (userNameInput.validity.tooLong) {
+    userNameInput.setCustomValidity('Имя не должно превышать 25-ти символов');
+  } else if (userNameInput.validity.valueMissing) {
+    userNameInput.setCustomValidity('Обязательное поле');
+  } else {
+    userNameInput.setCustomValidity('');
+  }
 });
 
 var similarWizards = createWizards(WIZARDS_COUNT);
