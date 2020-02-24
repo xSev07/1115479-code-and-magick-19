@@ -18,7 +18,7 @@
   }
 
   function getRandomNumberInRange(min, max) {
-    return Math.round(Math.random() * (+max - +min) + +min);
+    return Math.floor(Math.random() * (+max - +min) + +min);
   }
 
   function getArrayRandomElement(array) {
